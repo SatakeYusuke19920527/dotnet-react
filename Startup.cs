@@ -63,7 +63,7 @@ namespace dotnet_react
 
         if (env.IsDevelopment())
         {
-          spa.UseReactDevelopmentServer(npmScript: "start");
+              spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
         }
       });
     }
