@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_react
 {
@@ -28,6 +29,9 @@ namespace dotnet_react
       {
         configuration.RootPath = "client-app/build";
       });
+
+        services.AddDbContext<dotnet_reactAPI>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("dotnet_reactAPI")));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +67,7 @@ namespace dotnet_react
 
         if (env.IsDevelopment())
         {
-              spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+          spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
         }
       });
     }

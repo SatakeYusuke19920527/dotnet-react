@@ -7,10 +7,10 @@ namespace dotnet_react.Controllers
     [Route("api/[controller]")]
     public class TestController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{id}/file")]
+        public string Get(int id)
         {
-            return Ok("Hello React!!!!"); //HTTPステータスコード200を返す
+            return "受け取った引数は" + id.ToString();
         }
     }
 }

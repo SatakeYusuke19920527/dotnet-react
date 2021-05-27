@@ -1,5 +1,5 @@
 ﻿using System;
-namespace dotnet_react
+namespace dotnet_react.Models
 {
     public class TodoItem
     {
