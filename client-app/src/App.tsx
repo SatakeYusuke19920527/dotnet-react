@@ -1,23 +1,16 @@
 import React from 'react';
-import './App.css';
-import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Top from './components/Top';
+import { Notify } from './components/Notify';
 
 const App: React.FC<{}> = () => {
-  const getData1 = async () => {
-    const id = 123456;
-    const result = await axios.get(`api/test/${id}/file`);
-    console.log(result);
-  };
-  const getData2 = async () => {
-    const result = await axios.get('api/WeatherForecast');
-    console.log(result);
-  };
-
   return (
-    <div className="App">
-      <button onClick={getData1}>axios</button>
-      <button onClick={getData2}>weather</button>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Top} />
+        <Route exact path="/notify" component={Notify} />
+      </Switch>
+    </Router>
   );
 };
 
